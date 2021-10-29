@@ -10,18 +10,45 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <muxc:NavigationView Grid.RowSpan="2" Grid.Column="1" 
-                             IsSettingsVisible="False"
-                             IsBackButtonVisible="Collapsed"
-                             IsBackEnabled="False"
-                             AlwaysShowHeader="False"
-                             PaneDisplayMode="Top"
-                             SelectionFollowsFocus="Disabled"
-                             >
-            <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem Content="Test"/>
-                <muxc:NavigationViewItem Content="Test1"/>
-            </muxc:NavigationView.MenuItems>
-        </muxc:NavigationView>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Background="Gray" Height="32">
+            <TextBlock Text="{x:Bind ViewModel.Title}"></TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition x:Name="RightAreaWidth" Width="480"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <muxc:NavigationView 
+                x:Name="VideoRelatedTabs"
+                Grid.Row="0"
+                Grid.RowSpan="2" 
+                Grid.Column="1" 
+                IsSettingsVisible="False"
+                IsBackButtonVisible="Collapsed"
+                IsBackEnabled="False"
+                AlwaysShowHeader="False"
+                PaneDisplayMode="Top"
+                SelectionFollowsFocus="Disabled"
+                SelectionChanged="VideoRelatedTabs_SelectionChanged">
+                <muxc:NavigationView.MenuItems>
+                    <muxc:NavigationViewItem x:Name="RelatedItem" Content="relatedList"/>
+                    <muxc:NavigationViewItem x:Name="CommentItem" Content="commentList"/>
+                </muxc:NavigationView.MenuItems>
+            </muxc:NavigationView>
+
+        </Grid>
+
     </Grid>
 </Page>
